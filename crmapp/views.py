@@ -85,17 +85,19 @@ def add_record(request):
     
 def update_user(request, pk):
     if request.user.is_authenticated:
-        update_record = School.objects.get(id=pk)
+        update_record=School.objects.get(id=pk)
         form = AddRecordForm(request.POST or None, instance=update_record)
         if form.is_valid():
             form.save()
-            messages.success(request, "Your post have been Updated Successfully!!")
+            messages.success(request, "Your post have been added successfully")
             return redirect('home')
-        return render(request, 'apps/update_record.html', {'form': form})
+        return render(request, 'apps/add_record.html', {'form': form})
     
     else:
-        messages.success(request, "You are not eligible to View this")
+        messages.success(request, "You must be eligible to view this")
         return redirect('register')
+        
+            
         
         
         

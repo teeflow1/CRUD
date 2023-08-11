@@ -30,7 +30,7 @@ class AddRecordForm(forms.ModelForm):
     country=forms.CharField( required = True, max_length=100, widget = forms.TextInput(attrs = {'class': 'form-control'}))
     state=forms.CharField( required = True, max_length=100, widget = forms.TextInput(attrs = {'class': 'form-control'}))
     #city=forms.CharField( required = True, max_length=100, widget = forms.TextInput(attrs = {'class': 'form-control'}))
-    #email=forms.CharField( required = True, max_length=100, widget = forms.TextInput(attrs = {'class': 'form-control'}))
+    email=forms.CharField( required = True, max_length=100, widget = forms.TextInput(attrs = {'class': 'form-control'}))
     mobile=forms.CharField( required = True, max_length=100, widget = forms.TextInput(attrs = {'class': 'form-control'}))
     
     

@@ -4,6 +4,7 @@ class School(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     address = models.CharField(max_length=70)
+    email = models.EmailField()
     date_created = models.DateTimeField(auto_now_add=True)
     country = models.CharField(max_length=50)
     state = models.CharField(max_length=20)
