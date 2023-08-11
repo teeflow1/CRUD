@@ -1,0 +1,59 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+
+
+<br/>
+<h1 style = "text-align:center; color:green;"> Details </h1>
+<br/>
+
+<div class="col-md-6 offset-md-3">
+
+<div class="card">
+    <div class="card-header">
+        {{ record.first_name }} 
+        {{ record.last_name }}
+    </div>
+    <div class="card-body">
+      
+      <p class="card-text">
+        <strong>{{ record.first_name }}</strong>
+    </p>
+
+    <p class="card-text">
+        <strong>{{ record.last_name }}</strong>
+    </p>
+
+    <p class="card-text">
+        {{ record.country }}
+    </p>
+
+    <p class="card-text">
+        {{ record.mobile }}
+    </p>
+
+    <p class="card-text">
+        {{ record.date_created }}
+    </p>
+
+    <p class="card-text">
+        {{ record.id }}
+
+    </p>
+
+      
+    </div>
+  </div>
+<br/>
+</div>
+<div style = "text-align:center;">
+<a href = "{% url 'home' %}" class = "btn btn-success"> Back </a>
+<a href = "{% url 'delete' record.id %}" class = "btn btn-danger"> Delete </a>
+<a href = "{% url 'update' record.id %}" class = "btn btn-warning"> Update </a>
+
+
+
+
+</div>
+{% endblock %}
