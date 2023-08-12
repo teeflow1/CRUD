@@ -49,23 +49,22 @@ def register_user(request):
     
 def detail_record(request, pk):
     if request.user.is_authenticated:
-        record = School.objects.get(id=pk)
-        return render(request, 'apps/detail_record.html', {'record':record})
-    
+        record_details = School.objects.get(id=pk)
+        return render(request, 'apps/detail_record.html', {'record_details':record_details})
     else:
-        messages.success(request, "You must be eligible to view this")
+        messages.success(request, "You are not eligible")
         return redirect('register')
+        
+        
+    
     
     
 def delete_record(request, pk):
-    if request.user.is_authenticated:
-        delete_it = School.objects.get(id=pk)
-        delete_it.delete()
-        messages.success(request, "Your record has been deleted successfully")
-        return redirect('home')
-    else:
-        messages.success(request, "You must be eligible to view this")
-        return redirect('register')
+    delete_record = School.objects.get(id=pk)
+    delete_record.delete()
+    messages.success(request, "You Post has been deleted Successfully!!")
+    return redirect('home')
+    
     
     
 def add_record(request):
@@ -85,17 +84,24 @@ def add_record(request):
     
 def update_user(request, pk):
     if request.user.is_authenticated:
-        update_record=School.objects.get(id=pk)
+        update_record = School.objects.get(id=pk)
         form = AddRecordForm(request.POST or None, instance=update_record)
         if form.is_valid():
             form.save()
-            messages.success(request, "Your post have been added successfully")
+            messages.success(request, "Your post have been Updated successfully")
             return redirect('home')
-        return render(request, 'apps/add_record.html', {'form': form})
-    
+        return render(request, 'apps/update_record.html', {'form':form})
+        
     else:
         messages.success(request, "You must be eligible to view this")
         return redirect('register')
+        
+            
+    
+        
+          
+                
+    
         
             
         
