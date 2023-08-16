@@ -48,14 +48,22 @@ def register_user(request):
     
     
 def detail_record(request, pk):
-    pass
+    if request.user.is_authenticated:
+        my_record = School.objects.get(id=pk)
+        return render(request, 'apps/detail_record.html', {'my_record':my_record})
+    else:
+        messages.success(request, "You are not eligible")
+        return redirect('register')
         
         
     
     
     
 def delete_record(request, pk):
-    pass
+    delete_record = School.objects.get(id=pk)
+    delete_record.delete()
+    messages.success(request, "You Post has been deleted Successfully!!")
+    return redirect('home')
     
     
     
@@ -75,7 +83,18 @@ def add_record(request):
     
     
 def update_user(request, pk):
-    pass
+    if request.user.is_authenticated:
+        update_record = School.objects.get(id=pk)
+        form = AddRecordForm(request.POST or None, instance=update_record)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Your post have been Updated successfully")
+            return redirect('home')
+        return render(request, 'apps/update_record.html', {'form':form})
+        
+    else:
+        messages.success(request, "You must be eligible to view this")
+        return redirect('register')
         
             
     
