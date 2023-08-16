@@ -31,13 +31,13 @@
 <tbody>
     <tr>
       
-      <td>{{ school.first_name }}</td>
+      <td><a href = "{% url 'detail' school.id %}">{{ school.first_name }}</a></td>
       <td>{{ school.last_name }}</td>
       <td>{{ school.country }}</td>
       <td>{{ school.mobile }}</td>
       <td>{{ school.email }}</td>
       <td>{{ school.date_created }}</td>
-      <td><a href = "{% url 'detail' school.id %}">{{ school.id }} </a></td>
+      <td>{{ school.id }}</td>
     </tr>
 
 
