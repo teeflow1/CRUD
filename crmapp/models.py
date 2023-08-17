@@ -9,6 +9,7 @@ class School(models.Model):
     country = models.CharField(max_length=50)
     state = models.CharField(max_length=20)
     mobile = models.CharField(max_length=14)
+    sex = models.CharField(max_length=6)
     
     def __str(self):
         return (f"{self.first_name} {self.last_name}")

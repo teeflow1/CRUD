@@ -49,21 +49,34 @@ def register_user(request):
     
 def detail_record(request, pk):
     if request.user.is_authenticated:
-        my_record = School.objects.get(id=pk)
-        return render(request, 'apps/detail_record.html', {'my_record':my_record})
+        detail_it = School.objects.get(id=pk)
+        return render(request, 'apps/detail_record.html', {'detail_it': detail_it})
     else:
-        messages.success(request, "You are not eligible")
+        messages.success(request, "You are not qualified")
         return redirect('register')
         
         
     
     
     
+    
+        
+        
+        
+        
+    
+    
+    
 def delete_record(request, pk):
-    delete_record = School.objects.get(id=pk)
-    delete_record.delete()
-    messages.success(request, "You Post has been deleted Successfully!!")
-    return redirect('home')
+    if request.user.is_authenticated:
+        delete_it = School.objects.get(id=pk)
+        delete_it.delete()
+        messages.success(request, "You Post deleted Successfully")
+        return redirect('home')
+    else:
+        messages.success(request, "You are not qualified")
+        return redirect('register')
+        
     
     
     
@@ -84,17 +97,19 @@ def add_record(request):
     
 def update_user(request, pk):
     if request.user.is_authenticated:
-        update_record = School.objects.get(id=pk)
-        form = AddRecordForm(request.POST or None, instance=update_record)
+        update_it = School.objects.get(id=pk)
+        form = AddRecordForm(request.POST or None, instance=update_it)
         if form.is_valid():
             form.save()
             messages.success(request, "Your post have been Updated successfully")
             return redirect('home')
-        return render(request, 'apps/update_record.html', {'form':form})
-        
+        return render(request, 'apps/update_record.html', {'form': form})
+    
     else:
         messages.success(request, "You must be eligible to view this")
         return redirect('register')
+        
+        
         
             
     

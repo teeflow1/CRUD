@@ -18,6 +18,7 @@
         <th scope="col">Mobile</th>
         <th scope="col">Email</th>
         <th scope="col">Date Created</th>
+        <th scope="col">Sex</th>
         <th scope="col">ID</th>
       </tr>
     </thead>
@@ -37,6 +38,7 @@
       <td>{{ school.mobile }}</td>
       <td>{{ school.email }}</td>
       <td>{{ school.date_created }}</td>
+     <td>{{ school.sex }}</td>
       <td>{{ school.id }}</td>
     </tr>
 
@@ -59,10 +61,10 @@
 {% else %}
 
 <br/><br/>
-<div style="text-align:center;">
+<div style="text-align:center; color:green;">
 <h2> Login </h2>
 </div>
-
+<br/>
 <div class ="col-md-6 offset-md-3">
 
    
@@ -83,7 +85,9 @@
       <label class="form-check-label" for="exampleCheck1">Check me out</label>
     </div> -->
     <br/>
+    <div style= "text-align: center;">
     <button type="submit" class="btn btn-secondary">Login</button>
+    </div>
   </form>
 
 </div>

@@ -12,37 +12,37 @@
 
 <div class="card">
     <div class="card-header">
-        {{ my_record.first_name }} 
-        {{ my_record.last_name }}
+        {{detail_it.first_name }} 
+        {{ detail_it.last_name }}
     </div>
     <div class="card-body">
       
       <p class="card-text">
-        <strong>{{ my_record.first_name }}</strong>
+        <strong>{{ detail_it.first_name }}</strong>
     </p>
 
     <p class="card-text">
-        <strong>{{ my_record.last_name }}</strong>
+        <strong>{{ detail_it.last_name }}</strong>
     </p>
 
     <p class="card-text">
-        {{ my_record.country }}
+        {{ detail_it.country }}
     </p>
 
     <p class="card-text">
-        {{ my_record.mobile }}
+        {{ detail_it.mobile }}
     </p>
 
     <p class="card-text">
-        {{ my_record.email }}
+        {{ detail_it.email }}
     </p>
 
     <p class="card-text">
-        {{ my_record.date_created }}
+        {{ detail_it.date_created }}
     </p>
 
     <p class="card-text">
-        {{ my_record.id }}
+        {{ detail_it.id }}
 
     </p>
 
@@ -53,8 +53,10 @@
 </div>
 <div style = "text-align:center;">
 <a href = "{% url 'home' %}" class = "btn btn-secondary"> Back </a>
-<a href = "{% url 'delete' my_record.id %}" class = "btn btn-danger"> Delete </a>
-<a href = "{% url 'update' my_record.id %}" class = "btn btn-success"> Update </a>
+<a href = "{% url 'delete' detail_it.id %}" class = "btn btn-danger"> Delete </a>
+<a href = "{% url 'update' detail_it.id %}" class = "btn btn-success"> Update </a>
+
+
 
 
 
